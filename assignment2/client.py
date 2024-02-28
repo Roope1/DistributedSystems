@@ -31,7 +31,7 @@ def send_message(msg: Message) -> str:
         print("Could not connect to server.")
 
 
-def get_topic(topic: str) -> dict:
+def get_topic(topic: str) -> str:
     """Get a topic from server"""
     try:
         with ServerProxy(PROXY_ADDRESS) as proxy:
@@ -43,9 +43,10 @@ def get_topic(topic: str) -> dict:
 
 def main():
     # get the user input and create a Message object based on it
-    msg = get_user_input()
-    send_message(msg)
-
+    #msg = get_user_input()
+    #send_message(msg)
+    topic = input("Enter the topic: ")
+    print(get_topic(topic))
 
 if __name__ == "__main__":
     main()

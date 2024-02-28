@@ -1,5 +1,5 @@
 from xmlrpc.server import SimpleXMLRPCServer, SimpleXMLRPCRequestHandler
-
+import xml.etree.ElementTree as ET
 
 class RequestHandler(SimpleXMLRPCRequestHandler):
     rpc_paths = ("/RPC2",)
@@ -16,9 +16,16 @@ def main():
 
         @server.register_function(name="get_topic")
         def get_topic(topic):
-            # TODO: implement
-            raise NotImplementedError()
-            return "No topic found."
+            # Open the "database" xml file
+            with (open("db.xml", "r")) as f:
+                # Parse the xml file
+                root = ET.fromstring(f.read())
+                # find by topic
+                res = root.findall(f"./topic[@name='{topic}']")
+                if (len(res) > 0):
+                    return ET.tostring(res[0], encoding="unicode")
+                else: 
+                    return "No topic found."
 
         server.serve_forever()
 
