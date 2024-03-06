@@ -43,10 +43,10 @@ def get_topic(topic: str) -> str:
 
 def main():
     # get the user input and create a Message object based on it
-    #msg = get_user_input()
-    #send_message(msg)
-    topic = input("Enter the topic: ")
-    print(get_topic(topic))
+    msg = get_user_input()
+    send_message(msg)
+    #topic = input("Enter the topic: ")
+    #print(get_topic(topic))
 
 if __name__ == "__main__":
     main()
