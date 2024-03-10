@@ -14,8 +14,6 @@ def create_new_note(topic, content):
     new_content.text = content["text"]
     new_timestamp = ET.SubElement(new_note, "timestamp")
     new_timestamp.text = content["timestamp"]
-    print("from function")
-    ET.dump(new_note)
     return new_note
 
 def create_new_topic(content):
