@@ -10,5 +10,8 @@ def main():
 
     s.connect(('127.0.0.1', port))
 
+    # receive data from the server
+    print(s.recv(1024))
+
 if __name__ == "__main__":
     main()
